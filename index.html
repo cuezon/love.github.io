@@ -1,90 +1,103 @@
-<!-- Password Screen -->
-<div class="password-screen" id="passwordScreen">
-  <div class="box">
-    <h1>For My Love ❤️</h1>
-    <p>Enter the password:</p>
-    <input type="text" id="password" placeholder="Password" autofocus>
-    <button onclick="checkPassword()">Unlock</button>
-    <div class="error-message" id="errorMsg"></div>
-    <div class="hint-message">💡 What I like calling you</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Love ❤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Password Screen -->
+  <div class="password-screen" id="passwordScreen">
+    <div class="box">
+      <h1>For My Love ❤️</h1>
+      <p>Enter the password:</p>
+      <input type="text" id="password" placeholder="Password" autofocus>
+      <button onclick="checkPassword()">Unlock</button>
+      <div class="error-message" id="errorMsg"></div>
+      <div class="hint-message">💡 What I like calling you</div>
+    </div>
   </div>
-</div>
 
-<!-- Music Player Screen (Spotify Style) -->
-<div class="music-screen" id="musicScreen">
-  <!-- Floating musical notes background -->
-  <div class="floating-notes">
-    <span>🎵</span>
-    <span>🎶</span>
-    <span>🎵</span>
-    <span>🎶</span>
-    <span>🎵</span>
-    <span>🎶</span>
-  </div>
-  
-  <!-- Main Music App Container -->
-  <div class="music-app">
-    
-    <!-- Header -->
-    <div class="app-header">
-      <button class="back-btn-small" onclick="goBack()">←</button>
-      <h2>Songs That Describe what I feel for you ❤️</h2>
-      <div class="placeholder"></div>
+  <!-- Music Player Screen (Spotify Style) -->
+  <div class="music-screen" id="musicScreen">
+    <!-- Floating musical notes background -->
+    <div class="floating-notes">
+      <span>🎵</span>
+      <span>🎶</span>
+      <span>🎵</span>
+      <span>🎶</span>
+      <span>🎵</span>
+      <span>🎶</span>
     </div>
     
-    <!-- Main Content Area (Song List) -->
-    <div class="songs-container">
-      <h3 class="section-title">Songs for you</h3>
+    <!-- Main Music App Container -->
+    <div class="music-app">
       
-      <!-- Song List (Spotify style) -->
-      <div class="song-list" id="songList">
-        <!-- Songs will be loaded here by JavaScript -->
+      <!-- Header -->
+      <div class="app-header">
+        <button class="back-btn-small" onclick="goBack()">←</button>
+        <h2>Songs That Describe what I feel for you ❤️</h2>
+        <div class="placeholder"></div>
       </div>
-    </div>
-    
-    <!-- Mini Player at Bottom -->
-    <div class="mini-player" id="miniPlayer">
-      <div class="player-left">
-        <div class="now-playing-cover" id="nowPlayingCover">🎵</div>
-        <div class="now-playing-info">
-          <div class="now-playing-title" id="nowPlayingTitle">Select a song</div>
-          <div class="now-playing-artist" id="nowPlayingArtist"></div>
+      
+      <!-- Main Content Area (Song List) -->
+      <div class="songs-container">
+        <h3 class="section-title">Songs for you</h3>
+        
+        <!-- Song List (Spotify style) -->
+        <div class="song-list" id="songList">
+          <!-- Songs will be loaded here by JavaScript -->
         </div>
       </div>
       
-      <div class="player-center">
-        <div class="player-controls">
-          <button class="control-btn" onclick="previousSong()">⏮️</button>
-          <button class="play-btn" id="playPauseBtn" onclick="togglePlayPause()">▶️</button>
-          <button class="control-btn" onclick="nextSong()">⏭️</button>
-        </div>
-        <div class="progress-bar">
-          <span class="time" id="currentTime">0:00</span>
-          <div class="progress-container" onclick="seek(event)">
-            <div class="progress-fill" id="progressFill"></div>
+      <!-- Mini Player at Bottom -->
+      <div class="mini-player" id="miniPlayer">
+        <div class="player-left">
+          <div class="now-playing-cover" id="nowPlayingCover">🎵</div>
+          <div class="now-playing-info">
+            <div class="now-playing-title" id="nowPlayingTitle">Select a song</div>
+            <div class="now-playing-artist" id="nowPlayingArtist"></div>
           </div>
-          <span class="time" id="duration">0:00</span>
+        </div>
+        
+        <div class="player-center">
+          <div class="player-controls">
+            <button class="control-btn" onclick="previousSong()">⏮️</button>
+            <button class="play-btn" id="playPauseBtn" onclick="togglePlayPause()">▶️</button>
+            <button class="control-btn" onclick="nextSong()">⏭️</button>
+          </div>
+          <div class="progress-bar">
+            <span class="time" id="currentTime">0:00</span>
+            <div class="progress-container" onclick="seek(event)">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="time" id="duration">0:00</span>
+          </div>
+        </div>
+        
+        <div class="player-right">
+          <button class="lyrics-toggle" onclick="toggleLyrics()">📜</button>
         </div>
       </div>
       
-      <div class="player-right">
-        <button class="lyrics-toggle" onclick="toggleLyrics()">📜</button>
+      <!-- Lyrics Panel (Slides up) -->
+      <div class="lyrics-panel" id="lyricsPanel">
+        <div class="lyrics-header">
+          <h3>Lyrics</h3>
+          <button class="close-btn" onclick="closeLyrics()">✕</button>
+        </div>
+        <div class="lyrics-content" id="lyricsContent">
+          <div class="no-lyrics">Select a song to see lyrics</div>
+        </div>
       </div>
+      
     </div>
     
-    <!-- Lyrics Panel (Slides up) -->
-    <div class="lyrics-panel" id="lyricsPanel">
-      <div class="lyrics-header">
-        <h3>Lyrics</h3>
-        <button class="close-btn" onclick="closeLyrics()">✕</button>
-      </div>
-      <div class="lyrics-content" id="lyricsContent">
-        <div class="no-lyrics">Select a song to see lyrics</div>
-      </div>
-    </div>
-    
+    <!-- Audio Element -->
+    <audio id="audioPlayer" preload="metadata"></audio>
   </div>
-  
-  <!-- Audio Element -->
-  <audio id="audioPlayer" preload="metadata"></audio>
-</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
